@@ -28,6 +28,9 @@ def get_ns_pids(debug=False):
 
 
 def main():
+    if os.geteuid() != 0:
+        exit("Must be root.")
+
     debug = False
     result = get_ns_pids(debug)
     for tup in result:
